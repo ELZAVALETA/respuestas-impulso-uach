@@ -92,18 +92,12 @@
       color: #f0f0f0;
     }
     
-    .audio-block, .img-block {
+    .audio-block {
       margin: 1rem 0;
     }
     
     audio {
       width: 100%;
-    }
-    
-    img {
-      max-width: 100%;
-      border: 1px solid #444;
-      border-radius: 4px;
     }
     
     ul {
@@ -160,45 +154,49 @@
     <!-- Sección Equipamiento -->
     <section id="equipamiento" class="content-section">
       <h2>🛠️ Equipamiento Utilizado</h2>
-      <ul>
-        <li>Micrófono: [modelo]</li>
-        <li>Fuente sonora: [tipo]</li>
-        <li>Grabadora/interface: [modelo]</li>
-        <li>Software: [Reaper / MATLAB / Audacity / etc.]</li>
-      </ul>
+      <div class="content-section">
+        <ul>
+          <li>Micrófono: [modelo]</li>
+          <li>Fuente sonora: [tipo]</li>
+          <li>Grabadora/interface: [modelo]</li>
+          <li>Software: [Reaper / MATLAB / Audacity / etc.]</li>
+        </ul>
+      </div>
+      <div class="content-section">
+        <ul>
+          <li>Micrófono: [modelo]</li>
+          <li>Fuente sonora: [tipo]</li>
+          <li>Grabadora/interface: [modelo]</li>
+          <li>Software: [Reaper / MATLAB / Audacity / etc.]</li>
+        </ul>
+      </div>
+      <div class="content-section">
+        <ul>
+          <li>Micrófono: [modelo]</li>
+          <li>Fuente sonora: [tipo]</li>
+          <li>Grabadora/interface: [modelo]</li>
+          <li>Software: [Reaper / MATLAB / Audacity / etc.]</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Sección Recintos -->
     <section id="recintos" class="content-section">
       <h2>📍 Recintos Medidos</h2>
       <h3>1. Cámara Reverberante Acústica UACh</h3>
-      <div class="img-block">
-        <img src="imagenes/camara-reverberante.jpg" alt="Cámara Reverberante">
-      </div>
       <p>Descripción breve del recinto...</p>
       <div class="audio-block">
         <p>🎧 Respuesta al Impulso:</p>
         <audio controls src="audios/ri-camara.wav"></audio>
       </div>
-      <div class="img-block">
-        <img src="graficas/ri-camara.png" alt="Forma de onda RI cámara reverberante">
-      </div>
 
       <h3>2. [Nombre del Recinto 2]</h3>
       <p>Descripción breve...</p>
-      <div class="img-block">
-        <img src="imagenes/recinto2.jpg" alt="Recinto 2">
-      </div>
       <audio controls src="audios/ri-recinto2.wav"></audio>
-      <img src="graficas/ri-recinto2.png" alt="Forma de onda recinto 2">
 
       <h3>3. [Nombre del Recinto 3]</h3>
       <p>Descripción breve...</p>
-      <div class="img-block">
-        <img src="imagenes/recinto3.jpg" alt="Recinto 3">
-      </div>
       <audio controls src="audios/ri-recinto3.wav"></audio>
-      <img src="graficas/ri-recinto3.png" alt="Forma de onda recinto 3">
     </section>
 
     <!-- Sección Grabaciones -->
@@ -207,10 +205,8 @@
       <p>Grabaciones de voz e instrumento sin reverberación.</p>
       <h4>Voz</h4>
       <audio controls src="audios/voz-seca.wav"></audio>
-      <img src="graficas/voz-seca.png" alt="Forma de onda voz seca">
       <h4>Instrumento</h4>
       <audio controls src="audios/instrumento-seco.wav"></audio>
-      <img src="graficas/instrumento-seco.png" alt="Forma de onda instrumento seco">
     </section>
 
     <!-- Sección Convolución -->
@@ -220,20 +216,15 @@
 
       <h4>Voz en Cámara Reverberante</h4>
       <audio controls src="audios/voz-conv-camara.wav"></audio>
-      <img src="graficas/voz-conv-camara.png" alt="Forma de onda">
 
       <h4>Instrumento en Recinto 2</h4>
       <audio controls src="audios/instrumento-conv-recinto2.wav"></audio>
-      <img src="graficas/instrumento-conv-recinto2.png" alt="Forma de onda">
     </section>
 
     <!-- Sección Galería -->
     <section id="galeria" class="content-section">
       <h2>📸 Galería Fotográfica</h2>
-      <div class="img-block">
-        <img src="imagenes/medicion1.jpg" alt="Medición en terreno 1">
-        <img src="imagenes/medicion2.jpg" alt="Medición en terreno 2">
-      </div>
+      <p>Aquí irían las fotos del proyecto cuando estén disponibles.</p>
     </section>
   </div>
 
