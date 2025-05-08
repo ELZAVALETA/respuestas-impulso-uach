@@ -15,43 +15,16 @@
 <h2>Texto antes del audio 1</h2>
 <div id="audio1" class="player-container"></div>
 
+<h2>Texto antes del audio 2</h2>
+<div id="audio2" class="player-container"></div>
+
+<!-- Importar tu archivo JS externo -->
+<script src="../js/player.js"></script>
+
+<!-- Llamadas a la función (después de que esté definida) -->
 <script>
-  function createAudioPlayer(containerId, audioFilePath) {
-    const container = document.getElementById(containerId);
-
-    const waveformDiv = document.createElement("div");
-    waveformDiv.id = `${containerId}-waveform`;
-    waveformDiv.className = "wave";
-
-    const controlsDiv = document.createElement("div");
-    controlsDiv.className = "controls";
-    controlsDiv.innerHTML = `
-      <button id="${containerId}-play">Play</button>
-      <input id="${containerId}-volume" type="range" min="0" max="1" step="0.01" value="1">
-    `;
-
-    container.appendChild(waveformDiv);
-    container.appendChild(controlsDiv);
-
-    const wavesurfer = WaveSurfer.create({
-      container: `#${containerId}-waveform`,
-      waveColor: "#ccc",
-      progressColor: "#2196f3",
-      height: 80
-    });
-
-    wavesurfer.load(audioFilePath);
-
-    document.getElementById(`${containerId}-play`).addEventListener("click", () => {
-      wavesurfer.playPause();
-    });
-
-    document.getElementById(`${containerId}-volume`).addEventListener("input", (e) => {
-      wavesurfer.setVolume(e.target.value);
-    });
-  }
-
   createAudioPlayer("audio1", "../audio/an_01_bot.wav");
+  createAudioPlayer("audio2", "../audio/an_02_top.wav");
 </script>
 
 </body>
