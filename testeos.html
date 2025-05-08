@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Audio - Proyecto Acústica UACh</title>
+    <!-- Wavesurfer.js -->
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .audio-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        #waveform {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visualizador de Respuestas al Impulso</h1>
+    
+    <div class="audio-container">
+        <h2>Recinto: Sala Reverberante</h2>
+        <div id="waveform"></div>
+        
+        <div class="controls">
+            <button id="playBtn">Reproducir</button>
+            <button id="pauseBtn">Pausar</button>
+            <button id="zoomInBtn">Zoom +</button>
+            <button id="zoomOutBtn">Zoom -</button>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <label for="volumeControl">Volumen:</label>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.05" value="0.8">
+        </div>
+    </div>
+
+    <script>
+        // Inicializar Wavesurfer
+        const wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: '#3498db',
+            progressColor: '#2c3e50',
+            cursorColor: '#e74c3c',
+            barWidth: 2,
+            barRadius: 3,
+            cursorWidth: 1,
+            height: 150,
+            barGap: 2,
+            normalize: true,
+            responsive: true,
+        });
+
+        // Cargar audio (reemplaza con tu archivo)
+        wavesurfer.load('audio/tu_audio.wav');
+
+        // Controles
+        document.getElementById('playBtn').addEventListener('click', () => wavesurfer.play());
+        document.getElementById('pauseBtn').addEventListener('click', () => wavesurfer.pause());
+        document.getElementById('zoomInBtn').addEventListener('click', () => wavesurfer.zoom(wavesurfer.getZoom() + 50));
+        document.getElementById('zoomOutBtn').addEventListener('click', () => wavesurfer.zoom(Math.max(10, wavesurfer.getZoom() - 50)));
+        document.getElementById('volumeControl').addEventListener('input', (e) => wavesurfer.setVolume(e.target.value));
+
+        // Opcional: Mostrar tiempo actual
+        wavesurfer.on('timeupdate', (currentTime) => {
+            // console.log('Tiempo actual:', currentTime);
+        });
+    </script>
+</body>
+</html>
