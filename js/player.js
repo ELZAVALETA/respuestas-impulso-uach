@@ -1,7 +1,5 @@
 function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
   const container = document.getElementById(containerId);
-
-  // Estilo general del reproductor
   container.classList.add("audio-player-box");
 
   // Título
@@ -15,6 +13,12 @@ function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
   waveformDiv.id = `${containerId}-waveform`;
   waveformDiv.className = "wave";
   container.appendChild(waveformDiv);
+
+  // Tiempo
+  const timeDiv = document.createElement("div");
+  timeDiv.className = "time-display";
+  timeDiv.textContent = "0:00 / 0:00";
+  container.appendChild(timeDiv);
 
   // Controles
   const controlsDiv = document.createElement("div");
@@ -61,6 +65,32 @@ function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
 
   wavesurfer.on("finish", () => {
     playButton.textContent = "▶";
+  });
+
+  // Tiempo
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
+  };
+
+  wavesurfer.on("ready", () => {
+    const duration = formatTime(wavesurfer.getDuration());
+    timeDiv.textContent = `0:00 / ${duration}`;
+  });
+
+  wavesurfer.on("audioprocess", () => {
+    if (wavesurfer.isPlaying()) {
+      const current = formatTime(wavesurfer.getCurrentTime());
+      const duration = formatTime(wavesurfer.getDuration());
+      timeDiv.textContent = `${current} / ${duration}`;
+    }
+  });
+
+  wavesurfer.on("seek", () => {
+    const current = formatTime(wavesurfer.getCurrentTime());
+    const duration = formatTime(wavesurfer.getDuration());
+    timeDiv.textContent = `${current} / ${duration}`;
   });
 
   // Volumen
