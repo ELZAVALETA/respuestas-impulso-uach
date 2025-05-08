@@ -2,61 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Audio Players</title>
+  <title>Mi página con audios</title>
   <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="js/player.js" defer></script>
   <style>
     .player-container {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     .wave {
       width: 100%;
       height: 100px;
     }
     .controls {
-      margin-top: 5px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<div id="players"></div>
+<h2>Texto antes del audio 1</h2>
+<div id="audio1" class="player-container"></div>
+
+<h2>Texto antes del audio 2</h2>
+<div id="audio2" class="player-container"></div>
 
 <script>
-  const audioFiles = [
-    'audio/an_01_bot.wav',
-    'audio/an_02_bot.wav',
-    // Agrega más archivos aquí
-  ];
-
-  audioFiles.forEach((file, index) => {
-    const container = document.createElement('div');
-    container.className = 'player-container';
-    container.innerHTML = `
-      <div id="waveform${index}" class="wave"></div>
-      <div class="controls">
-        <button id="play${index}">Play</button>
-        <input id="volume${index}" type="range" min="0" max="1" step="0.01" value="1">
-      </div>
-    `;
-    document.getElementById('players').appendChild(container);
-
-    const wavesurfer = WaveSurfer.create({
-      container: `#waveform${index}`,
-      waveColor: '#ddd',
-      progressColor: '#333',
-      height: 80
-    });
-
-    wavesurfer.load(file);
-
-    document.getElementById(`play${index}`).addEventListener('click', () => {
-      wavesurfer.playPause();
-    });
-
-    document.getElementById(`volume${index}`).addEventListener('input', e => {
-      wavesurfer.setVolume(e.target.value);
-    });
-  });
+  createAudioPlayer("audio1", "audio/an_01_bot.wav");
+  createAudioPlayer("audio2", "audio/an_02_bot.wav");
 </script>
 
 </body>
