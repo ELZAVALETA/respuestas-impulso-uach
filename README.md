@@ -52,8 +52,9 @@
 <body>
 
   <header>
+    <img src="imagenes/logo-au.png" alt="Logo UACh">
     <h1>Captura y Procesamiento de Respuesta al Impulso</h1>
-    <p>Proyecto Acústica UACh - Grupo X</p>
+    <p>Proyecto Acústica UACh - Grupo NUGGETS</p>
   </header>
 
   <section>
