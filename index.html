@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Respuesta al Impulso - Grupo UACh</title>
   <style>
-    /* Estilos generales (combinados) */
+    /* Estilos generales */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #212121;
+      background-color: #212121; /* Color principal (no cambia) */
       color: #f0f0f0;
       display: flex;
       min-height: 100vh;
       flex-direction: column;
     }
     
-    /* Barra lateral */
+    /* Barra lateral (sin cambios) */
     .sidebar {
       width: 200px;
       height: 100vh;
@@ -34,12 +34,13 @@
       color: #f0f0f0;
     }
     
+    /* Botones más oscuros (#1a1a1a) */
     .nav-btn {
       display: block;
       width: 100%;
       padding: 12px;
       margin: 8px 0;
-      background: #333333;
+      background: #1a1a1a; /* Más oscuro que antes (#333333) */
       color: #f0f0f0;
       border: none;
       border-radius: 4px;
@@ -50,29 +51,29 @@
     }
     
     .nav-btn:hover {
-      background: #666666;
+      background: #2a2a2a; /* Más oscuro que antes (#666666) */
     }
     
     .nav-btn.active {
-      background: #474747;
+      background: #1a1a1a; /* Igual que normal pero con bold */
       font-weight: bold;
     }
     
     /* Contenido principal */
     .main-content {
       margin-left: 240px;
-      padding: 20px;
+      padding: 20px 20px 38px 20px; /* Mayor espacio inferior (38px vs 20px original) */
       width: calc(100% - 240px);
       flex: 1;
     }
     
-    /* Secciones de contenido */
+    /* Secciones de contenido - Más oscuras (#2a2a2a) y mayor margen inferior */
     .content-section {
       display: none;
       padding: 2rem;
-      margin: 1rem auto;
+      margin: 1rem auto 3.8rem auto; /* 90% más espacio inferior (3.8rem vs 2rem original) */
       max-width: 900px;
-      background: #474747;
+      background: #2a2a2a; /* Más oscuro que antes (#474747) */
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
@@ -82,7 +83,7 @@
     }
     
     h2 {
-      border-bottom: 2px solid #666666;
+      border-bottom: 2px solid #444;
       padding-bottom: 0.5rem;
       color: #f0f0f0;
     }
@@ -101,7 +102,7 @@
     
     img {
       max-width: 100%;
-      border: 1px solid #666;
+      border: 1px solid #444;
       border-radius: 4px;
     }
     
