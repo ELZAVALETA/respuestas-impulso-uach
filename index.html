@@ -9,14 +9,14 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #212121; /* Color principal (no cambia) */
+      background-color: #212121;
       color: #f0f0f0;
       display: flex;
       min-height: 100vh;
       flex-direction: column;
     }
     
-    /* Barra lateral (sin cambios) */
+    /* Barra lateral */
     .sidebar {
       width: 200px;
       height: 100vh;
@@ -27,20 +27,40 @@
       overflow-y: auto;
     }
     
-    .sidebar h2 {
+    .sidebar-header {
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-logo {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
       color: #f0f0f0;
     }
     
-    /* Botones más oscuros (#1a1a1a) */
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-divider {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 15px;
+    }
+    
+    /* Botones de navegación */
     .nav-btn {
       display: block;
       width: 100%;
       padding: 12px;
       margin: 8px 0;
-      background: #282828; /* Más oscuro que antes (#333333) */
+      background: #282828;
       color: #f0f0f0;
       border: none;
       border-radius: 4px;
@@ -51,29 +71,29 @@
     }
     
     .nav-btn:hover {
-      background: #2a2a2a; /* Más oscuro que antes (#666666) */
+      background: #2a2a2a;
     }
     
     .nav-btn.active {
-      background: #212121; /* Igual que normal pero con bold */
+      background: #212121;
       font-weight: bold;
     }
     
     /* Contenido principal */
     .main-content {
       margin-left: 240px;
-      padding: 20px 20px 30px 20px; /* Mayor espacio inferior (38px vs 20px original) */
+      padding: 20px 20px 30px 20px;
       width: calc(100% - 240px);
       flex: 1;
     }
     
-    /* Secciones de contenido - Más oscuras (#2a2a2a) y mayor margen inferior */
+    /* Secciones de contenido */
     .content-section {
       display: none;
       padding: 2rem;
-      margin: 1rem auto 3rem auto; /* 90% más espacio inferior (3.8rem vs 2rem original) */
+      margin: 1rem auto 3rem auto;
       max-width: 900px;
-      background: #2a2a2a; /* Más oscuro que antes (#474747) */
+      background: #2a2a2a;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
@@ -120,7 +140,12 @@
 <body>
   <!-- Barra lateral -->
   <div class="sidebar">
-    <h2>Navegación</h2>
+    <div class="sidebar-header">
+      <img src="logo.png" alt="Logo" class="sidebar-logo">
+      <div class="sidebar-title">Tarea 02</div>
+      <div class="sidebar-subtitle">ACUS099</div>
+    </div>
+    <div class="sidebar-divider"></div>
     <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
     <button class="nav-btn" onclick="showSection('integrantes')">👥 Integrantes</button>
     <button class="nav-btn" onclick="showSection('equipamiento')">🛠️ Equipamiento</button>
