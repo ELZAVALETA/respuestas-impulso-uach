@@ -14,20 +14,21 @@ function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
   waveformDiv.className = "wave";
   container.appendChild(waveformDiv);
 
-  // Tiempo
-  const timeDiv = document.createElement("div");
-  timeDiv.className = "time-display";
-  timeDiv.textContent = "0:00 / 0:00";
-  container.appendChild(timeDiv);
-
   // Controles
   const controlsDiv = document.createElement("div");
   controlsDiv.className = "controls";
 
+  // Botón Play/Pause
   const playButton = document.createElement("button");
   playButton.id = `${containerId}-play`;
   playButton.textContent = "▶";
 
+  // Tiempo
+  const timeDiv = document.createElement("div");
+  timeDiv.className = "time-display";
+  timeDiv.textContent = "0:00 / 0:00";
+
+  // Volumen
   const volumeSlider = document.createElement("input");
   volumeSlider.id = `${containerId}-volume`;
   volumeSlider.type = "range";
@@ -36,7 +37,9 @@ function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
   volumeSlider.step = "0.01";
   volumeSlider.value = "1";
 
+  // Agregar controles en orden: botón → tiempo → volumen
   controlsDiv.appendChild(playButton);
+  controlsDiv.appendChild(timeDiv);
   controlsDiv.appendChild(volumeSlider);
   container.appendChild(controlsDiv);
 
@@ -45,12 +48,13 @@ function createAudioPlayer(containerId, audioFilePath, audioTitle = "") {
     container: `#${containerId}-waveform`,
     waveColor: "#ccc",
     progressColor: "#2196f3",
+    cursorWidth: 0, // ← elimina la línea vertical
     height: 80
   });
 
   wavesurfer.load(audioFilePath);
 
-  // Play/Pause
+  // Reproducción
   playButton.addEventListener("click", () => {
     wavesurfer.playPause();
   });
