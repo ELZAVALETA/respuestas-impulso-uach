@@ -10,8 +10,10 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #212121;
-      color: #333;
+      color: #f0f0f0;
       display: flex;
+      min-height: 100vh;
+      flex-direction: column;
     }
     
     /* Barra lateral */
@@ -29,6 +31,7 @@
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.2);
       padding-bottom: 15px;
+      color: #f0f0f0;
     }
     
     .nav-btn {
@@ -36,8 +39,8 @@
       width: 100%;
       padding: 12px;
       margin: 8px 0;
-      background: rgba(255,255,255,0.1);
-      color: white;
+      background: #333333;
+      color: #f0f0f0;
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -47,30 +50,31 @@
     }
     
     .nav-btn:hover {
-      background: rgba(255,255,255,0.2);
+      background: #666666;
     }
     
     .nav-btn.active {
-      background: #212121;
+      background: #474747;
       font-weight: bold;
     }
     
     /* Contenido principal */
     .main-content {
-      margin-left: 290px;
+      margin-left: 240px;
       padding: 20px;
-      width: calc(100% - 290px);
+      width: calc(100% - 240px);
+      flex: 1;
     }
     
-    /* Secciones de contenido (heredado de tu diseño) */
+    /* Secciones de contenido */
     .content-section {
       display: none;
       padding: 2rem;
       margin: 1rem auto;
       max-width: 900px;
-      background: white;
+      background: #474747;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
     
     .content-section.active {
@@ -78,8 +82,13 @@
     }
     
     h2 {
-      border-bottom: 2px solid #003366;
+      border-bottom: 2px solid #666666;
       padding-bottom: 0.5rem;
+      color: #f0f0f0;
+    }
+    
+    h3, h4 {
+      color: #f0f0f0;
     }
     
     .audio-block, .img-block {
@@ -92,20 +101,24 @@
     
     img {
       max-width: 100%;
-      border: 1px solid #ccc;
+      border: 1px solid #666;
       border-radius: 4px;
+    }
+    
+    ul {
+      color: #f0f0f0;
     }
     
     footer {
       text-align: center;
-      padding: 1rem;
-      background-color: #003366;
-      color: white;
-      margin-top: 2rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 8px;
+      padding: 0.5rem;
+      color: #aaa;
+      font-size: 0.8rem;
+      width: calc(100% - 240px);
+      margin-left: 240px;
+      position: fixed;
+      bottom: 0;
+      background: transparent;
     }
   </style>
 </head>
@@ -224,11 +237,11 @@
         <img src="imagenes/medicion2.jpg" alt="Medición en terreno 2">
       </div>
     </section>
-
-    <footer>
-      <p>UACh - Escuela de Acústica | Proyecto de Medición ISO 3382</p>
-    </footer>
   </div>
+
+  <footer>
+    <p>UACh - Escuela de Acústica | Proyecto de Medición ISO 3382</p>
+  </footer>
 
   <script>
     function showSection(sectionId) {
