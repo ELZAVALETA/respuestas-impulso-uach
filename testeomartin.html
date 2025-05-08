@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respuesta al Impulso - Grupo UACh</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #212121;
+      color: #f0f0f0;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    
+    /* Barra lateral */
+    .sidebar {
+      width: 200px;
+      height: 100vh;
+      background: #171717;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      overflow-y: auto;
+    }
+    
+    /* ... (Resto de los estilos) ... */
+
+    /* Estilos para el visor de onda */
+    .waveform {
+      width: 100%;
+      height: 100px;
+      margin: 1rem 0;
+      background: #2a2a2a;
+      border-radius: 8px;
+    }
+  </style>
+  <!-- Cargar Wavesurfer.js -->
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <!-- ... (Tu contenido de barra lateral) ... -->
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <!-- Sección Convolución -->
+    <section id="convolucion" class="content-section">
+      <h2>🔁 Convolución con Respuestas al Impulso</h2>
+      <p>Aplicación de convolución para simular los recintos.</p>
+
+      <!-- Contenedor de la forma de onda -->
+      <h4>Voz en Cámara Reverberante</h4>
+      <div id="waveform-camara" class="waveform"></div>
+      <audio id="audio-camara" controls src="audios/voz-conv-camara.wav"></audio>
+
+      <h4>Instrumento en Recinto 2</h4>
+      <div id="waveform-recinto2" class="waveform"></div>
+      <audio id="audio-recinto2" controls src="audios/instrumento-conv-recinto2.wav"></audio>
+    </section>
+
+    <!-- ... (Otras secciones del contenido) ... -->
+  </div>
+
+  <footer>
+    <p>UACh - Escuela de Acústica | Proyecto de Medición ISO 3382</p>
+  </footer>
+
+  <script>
+    // Función para cargar la onda en un contenedor de Wavesurfer.js
+    function loadWaveform(audioElementId, waveformElementId) {
+      var wavesurfer = WaveSurfer.create({
+        container: '#' + waveformElementId,
+        waveColor: '#3c3c3c',
+        progressColor: '#00bcd4',
+        height: 100,
+        responsive: true
+      });
+
+      var audioElement = document.getElementById(audioElementId);
+      wavesurfer.load(audioElement.src);
+
+      audioElement.onplay = function() {
+        wavesurfer.play();
+      };
+
+      audioElement.onpause = function() {
+        wavesurfer.pause();
+      };
+
+      audioElement.onended = function() {
+        wavesurfer.stop();
+      };
+    }
+
+    // Inicializar las formas de onda
+    document.addEventListener('DOMContentLoaded', function() {
+      loadWaveform('audio-camara', 'waveform-camara');
+      loadWaveform('audio-recinto2', 'waveform-recinto2');
+    });
+  </script>
+</body>
+</html>
