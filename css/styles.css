@@ -80,3 +80,11 @@
   aspect-ratio: 16/9; /* Relación de aspecto fija */
 }
 
+.scroll-controlled-video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: auto;
+  cursor: ns-resize;
+}
+
