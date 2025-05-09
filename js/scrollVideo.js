@@ -1,18 +1,15 @@
-const video = document.getElementById('scrollVideo');
+function showSection(event, sectionId) {
+  // Oculta todas las secciones
+  document.querySelectorAll('.content-section').forEach(section => {
+    section.classList.remove('active');
+  });
 
-// Espera a que los metadatos del video estén cargados
-video.addEventListener('loadedmetadata', () => {
-  const duration = video.duration;
+  // Muestra la sección seleccionada
+  document.getElementById(sectionId).classList.add('active');
 
-  const onScroll = () => {
-    const scrollTop = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollFraction = scrollTop / maxScroll;
-
-    const videoTime = duration * scrollFraction;
-    video.currentTime = videoTime;
-  };
-
-  // Escucha scroll y ejecuta función
-  window.addEventListener('scroll', onScroll);
-});
+  // Actualiza el botón activo
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+}
