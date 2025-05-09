@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Testeos de Audio</title>
-  <script src="https://unpkg.com/wavesurfer.js"></script>
-  <link rel="stylesheet" href="../css/styles.css">
+  <title>Scroll Video Recinto</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      z-index: -1;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spacer {
+      height: 300vh; /* controla duración del scroll */
+    }
+  </style>
 </head>
 <body>
+  <div class="video-container">
+    <video id="scrollVideo" src="video/recinto1.mp4" muted playsinline></video>
+  </div>
+  <div class="spacer"></div>
 
-<h2>Texto antes del audio 1</h2>
-<div id="audio1" class="player-container"></div>
-
-<h2>Texto antes del audio 2</h2>
-<div id="audio2" class="player-container"></div>
-
-<h2>Texto antes del audio 3</h2>
-<div id="audio3" class="player-container"></div>
-
-<script src="../js/player.js"></script>
-<script>
-  createAudioPlayer("audio1", "../audio/an_01_bot.wav", "Título del Audio 1");
-  createAudioPlayer("audio2", "../audio/an_02_bot.wav", "Título del Audio 2");
-  createAudioPlayer("audio3", "../audio/an_03_poem.wav", "Título del Audio 3");
-</script>
-
+  <script src="js/scrollVideo.js" type="module"></script>
 </body>
 </html>
