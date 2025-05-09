@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const delta = Math.sign(event.deltaY);
 
       // Control proporcional del video
-      const speed = 0.005; // Ajusta esta constante según sensibilidad deseada
+      const speed = 2.0; // Ajusta esta constante según sensibilidad deseada
       video.currentTime += delta * speed * video.duration;
 
       // Limita entre 0 y duración máxima
