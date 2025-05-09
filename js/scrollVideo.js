@@ -1,35 +1,40 @@
-const video = document.getElementById('scrollVideo');
+document.addEventListener("DOMContentLoaded", () => {
+  const videos = document.querySelectorAll(".scroll-controlled-video");
 
-// Espera a que los metadatos del video estén cargados
-video.addEventListener('loadedmetadata', () => {
-  const duration = video.duration;
+  videos.forEach(video => {
+    let isHovering = false;
+    let lastScrollTop = 0;
 
-  let isVideoHovered = false; // Variable para verificar si el cursor está sobre el video
+    // Evita que el video se reproduzca automáticamente
+    video.pause();
+    video.currentTime = 0;
 
-  const onScroll = () => {
-    if (!isVideoHovered) {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollFraction = scrollTop / maxScroll;
+    // Cuando el cursor entra
+    video.addEventListener("mouseenter", () => {
+      isHovering = true;
+    });
 
-      const videoTime = duration * scrollFraction;
-      video.currentTime = videoTime;
-    }
-  };
+    // Cuando el cursor sale
+    video.addEventListener("mouseleave", () => {
+      isHovering = false;
+    });
 
-  // Escucha el evento de scroll
-  window.addEventListener('scroll', onScroll);
+    // Control del scroll global
+    window.addEventListener("wheel", event => {
+      if (!isHovering) return; // Solo activa si el cursor está sobre el video
 
-  // Detecta si el cursor está sobre el video
-  video.addEventListener('mouseenter', () => {
-    isVideoHovered = true;
-    // Desactiva el scroll de la página mientras el cursor está sobre el video
-    document.body.style.overflow = 'hidden';
-  });
+      event.preventDefault(); // Previene el scroll normal
 
-  video.addEventListener('mouseleave', () => {
-    isVideoHovered = false;
-    // Reactiva el scroll de la página cuando el cursor sale del video
-    document.body.style.overflow = 'auto';
+      // Dirección del scroll
+      const delta = Math.sign(event.deltaY);
+
+      // Control proporcional del video
+      const speed = 0.02; // Ajusta esta constante según sensibilidad deseada
+      video.currentTime += delta * speed * video.duration;
+
+      // Limita entre 0 y duración máxima
+      if (video.currentTime < 0) video.currentTime = 0;
+      if (video.currentTime > video.duration) video.currentTime = video.duration;
+    }, { passive: false });
   });
 });
