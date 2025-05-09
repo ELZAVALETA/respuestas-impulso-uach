@@ -27,44 +27,227 @@
       overflow-y: auto;
     }
     
-    /* ... (Resto de los estilos) ... */
-
-    /* Estilos para el visor de onda */
-    .waveform {
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-logo {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #f0f0f0;
+    }
+    
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-divider {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 15px;
+    }
+    
+    /* Botones de navegación */
+    .nav-btn {
+      display: block;
       width: 100%;
-      height: 100px;
-      margin: 1rem 0;
+      padding: 12px;
+      margin: 8px 0;
+      background: #282828;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    
+    .nav-btn:hover {
+      background: #2a2a2a;
+    }
+    
+    .nav-btn.active {
+      background: #212121;
+      font-weight: bold;
+    }
+    
+    /* Contenido principal */
+    .main-content {
+      margin-left: 240px;
+      padding: 20px 20px 30px 20px;
+      width: calc(100% - 240px);
+      flex: 1;
+    }
+    
+    /* Secciones de contenido */
+    .content-section {
+      display: none;
+      padding: 2rem;
+      margin: 1rem auto 3rem auto;
+      max-width: 900px;
       background: #2a2a2a;
       border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .content-section.active {
+      display: block;
+    }
+    
+    h2 {
+      border-bottom: 2px solid #444;
+      padding-bottom: 0.5rem;
+      color: #f0f0f0;
+    }
+    
+    h3, h4 {
+      color: #f0f0f0;
+    }
+    
+    .audio-block {
+      margin: 1rem 0;
+    }
+    
+    audio {
+      width: 100%;
+    }
+    
+    ul {
+      color: #f0f0f0;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 0.5rem;
+      color: #aaa;
+      font-size: 0.8rem;
+      width: calc(100% - 240px);
+      margin-left: 240px;
+      position: fixed;
+      bottom: 0;
+      background: transparent;
     }
   </style>
-  <!-- Cargar Wavesurfer.js -->
-  <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
   <!-- Barra lateral -->
   <div class="sidebar">
-    <!-- ... (Tu contenido de barra lateral) ... -->
+    <div class="sidebar-header">
+      <img src="../imagenes/logo-au.png" alt="Logo" class="sidebar-logo">
+      <div class="sidebar-title">Tarea 02</div>
+      <div class="sidebar-subtitle">ACUS099</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
+    <button class="nav-btn" onclick="showSection('integrantes')">👥 Integrantes</button>
+    <button class="nav-btn" onclick="showSection('equipamiento')">🛠️ Equipamiento</button>
+    <button class="nav-btn" onclick="showSection('recintos')">📍 Recintos Medidos</button>
+    <button class="nav-btn" onclick="showSection('grabaciones')">🎙️ Grabaciones</button>
+    <button class="nav-btn" onclick="showSection('convolucion')">🔁 Convolución</button>
+    <button class="nav-btn" onclick="showSection('galeria')">📸 Galería</button>
   </div>
 
   <!-- Contenido principal -->
   <div class="main-content">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="content-section active">
+      <header>
+        <h1>Captura y Procesamiento de Respuesta al Impulso</h1>
+        <p>Proyecto Acústica UACh - Grupo X</p>
+      </header>
+      <p>Bienvenido al informe del proyecto de medición acústica.</p>
+    </section>
+
+    <!-- Sección Integrantes -->
+    <section id="integrantes" class="content-section">
+      <h2>👥 Integrantes del Grupo</h2>
+      <ul>
+        <li>Nombre 1</li>
+        <li>Nombre 2</li>
+        <li>Nombre 3</li>
+      </ul>
+    </section>
+
+   <!-- Sección Equipamiento -->
+<section id="equipamiento" class="content-section">
+  <h2>🛠️ Equipamiento Utilizado</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around;">
+
+    <div style="flex: 1 1 200px; text-align: center;">
+      <img src="../imagenes/Behringer-ECM8000-Microfono-de-Condensador-para-Medicion-Set-Planet-Music-1200x1200-1.png" alt="Micrófono" style="width: 100%; max-width: 200px; border-radius: 8px;">
+      <p>Micrófono: Behringer-ECM8000</p>
+    </div>
+
+    <div style="flex: 1 1 200px; text-align: center;">
+      <img src="../imagenes/s-l400.png" alt="Fuente sonora" style="width: 100%; max-width: 200px; border-radius: 8px;">
+      <p>Fuente sonora: Wood clapper</p>
+    </div>
+
+    <div style="flex: 1 1 200px; text-align: center;">
+      <img src="../imagenes/23544.png" alt="Grabadora o interfaz" style="width: 100%; max-width: 200px; border-radius: 8px;">
+      <p>Grabadora/Interface: KOMPLETE Audio 1</p>
+    </div>
+
+    <div style="flex: 1 1 200px; text-align: center;">
+      <img src="../imagenes/s23_hero_sp23-dlab-ableton.png" alt="Software" style="width: 100%; max-width: 200px; border-radius: 8px;">
+      <p>Software: Ableton Live 12 Suite</p>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- Sección Recintos -->
+    <section id="recintos" class="content-section">
+      <h2>📍 Recintos Medidos</h2>
+      <h3>1. Cámara Reverberante Acústica UACh</h3>
+      
+      <p>Descripción breve del recinto...</p>
+      
+       
+
+      <h3>2. Edificio 14K</h3>
+      <p>Descripción breve...</p>
+     
+      <h3>3. Edificio 6K</h3>
+      <p>Descripción breve...</p>
+     
+
+    <!-- Sección Grabaciones -->
+    <section id="grabaciones" class="content-section">
+      <h2>🎙️ Grabaciones en Cámara Anecoica</h2>
+      <p>Grabaciones de voz e instrumento sin reverberación.</p>
+      <h4>Voz</h4>
+      <audio controls src="audios/voz-seca.wav"></audio>
+      <h4>Instrumento</h4>
+      <audio controls src="audios/instrumento-seco.wav"></audio>
+    </section>
+
     <!-- Sección Convolución -->
     <section id="convolucion" class="content-section">
       <h2>🔁 Convolución con Respuestas al Impulso</h2>
       <p>Aplicación de convolución para simular los recintos.</p>
 
-      <!-- Contenedor de la forma de onda -->
       <h4>Voz en Cámara Reverberante</h4>
-      <div id="waveform-camara" class="waveform"></div>
-      <audio id="audio-camara" controls src="audios/voz-conv-camara.wav"></audio>
+      <audio controls src="audios/voz-conv-camara.wav"></audio>
 
       <h4>Instrumento en Recinto 2</h4>
-      <div id="waveform-recinto2" class="waveform"></div>
-      <audio id="audio-recinto2" controls src="audios/instrumento-conv-recinto2.wav"></audio>
+      <audio controls src="audios/instrumento-conv-recinto2.wav"></audio>
     </section>
 
-    <!-- ... (Otras secciones del contenido) ... -->
+    <!-- Sección Galería -->
+    <section id="galeria" class="content-section">
+      <h2>📸 Galería Fotográfica</h2>
+      <p>Aquí irían las fotos del proyecto cuando estén disponibles.</p>
+    </section>
   </div>
 
   <footer>
@@ -72,37 +255,21 @@
   </footer>
 
   <script>
-    // Función para cargar la onda en un contenedor de Wavesurfer.js
-    function loadWaveform(audioElementId, waveformElementId) {
-      var wavesurfer = WaveSurfer.create({
-        container: '#' + waveformElementId,
-        waveColor: '#3c3c3c',
-        progressColor: '#00bcd4',
-        height: 100,
-        responsive: true
+    function showSection(sectionId) {
+      // Oculta todas las secciones
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
       });
-
-      var audioElement = document.getElementById(audioElementId);
-      wavesurfer.load(audioElement.src);
-
-      audioElement.onplay = function() {
-        wavesurfer.play();
-      };
-
-      audioElement.onpause = function() {
-        wavesurfer.pause();
-      };
-
-      audioElement.onended = function() {
-        wavesurfer.stop();
-      };
+      
+      // Muestra la sección seleccionada
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Actualiza el botón activo
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
     }
-
-    // Inicializar las formas de onda
-    document.addEventListener('DOMContentLoaded', function() {
-      loadWaveform('audio-camara', 'waveform-camara');
-      loadWaveform('audio-recinto2', 'waveform-recinto2');
-    });
   </script>
 </body>
 </html>
