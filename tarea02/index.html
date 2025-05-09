@@ -210,18 +210,14 @@
       <h2>📍 Recintos Medidos</h2>
       <h3>1. Cámara Reverberante Acústica UACh</h3>
       <p>Descripción breve del recinto...</p>
-      <div class="player-container">
-        <div class="audio-player-box">
-          <div class="audio-title">Video: Cámara Reverberante UACh</div>
-          <video
-            id="customVideo"
-            src="../video/recinto1.mp4"
-            width="100%"
-            controls
-            style="border-radius: 8px; background-color: black;"
-          ></video>
+      
+      <div class="scroll-video-wrapper">
+        <div class="scroll-video-container">
+          <video id="scrollVideo" src="../video/recinto1.mp4" muted playsinline></video>
         </div>
+        <div class="spacer"></div>
       </div>
+      <script type="module" src="js/scrollVideo.js"></script>
       
       <h3>2. Edificio 14K</h3>
       <p>Descripción breve...</p>
