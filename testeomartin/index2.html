@@ -6,18 +6,293 @@
   <title>Respuesta al Impulso - Grupo UACh</title>
   <script src="https://unpkg.com/wavesurfer.js"></script>
   <style>
-    /* [Todos tus estilos anteriores permanecen igual] */
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #212121;
+      color: #f0f0f0;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    
+    /* Barra lateral */
+    .sidebar {
+      width: 200px;
+      height: 100vh;
+      background: #171717;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      overflow-y: auto;
+    }
+    
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-logo {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #f0f0f0;
+    }
+    
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+    
+    .sidebar-divider {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 15px;
+    }
+    
+    /* Botones de navegación */
+    .nav-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      background: #282828;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    
+    .nav-btn:hover {
+      background: #2a2a2a;
+    }
+    
+    .nav-btn.active {
+      background: #212121;
+      font-weight: bold;
+    }
+    
+    /* Contenido principal */
+    .main-content {
+      margin-left: 240px;
+      padding: 20px 20px 30px 20px;
+      width: calc(100% - 240px);
+      flex: 1;
+    }
+    
+    /* Secciones de contenido */
+    .content-section {
+      display: none;
+      padding: 2rem;
+      margin: 1rem auto 3rem auto;
+      max-width: 900px;
+      background: #2a2a2a;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .content-section.active {
+      display: block;
+    }
+    
+    h2 {
+      border-bottom: 2px solid #444;
+      padding-bottom: 0.5rem;
+      color: #f0f0f0;
+    }
+    
+    h3, h4 {
+      color: #f0f0f0;
+    }
+    
+    .audio-block {
+      margin: 1rem 0;
+    }
+    
+    audio {
+      width: 100%;
+    }
+    
+    ul {
+      color: #f0f0f0;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 0.5rem;
+      color: #aaa;
+      font-size: 0.8rem;
+      width: calc(100% - 240px);
+      margin-left: 240px;
+      position: fixed;
+      bottom: 0;
+      background: transparent;
+    }
+    
+    /* Player container styles */
+    .player-container {
+      margin: 20px 0;
+      padding: 15px;
+      background: #333;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
-  <!-- [Todo el contenido HTML anterior permanece igual] -->
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="imagenes/logo-au.png" alt="Logo" class="sidebar-logo">
+      <div class="sidebar-title">Tarea 02</div>
+      <div class="sidebar-subtitle">ACUS099</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
+    <button class="nav-btn" onclick="showSection('integrantes')">👥 Integrantes</button>
+    <button class="nav-btn" onclick="showSection('equipamiento')">🛠️ Equipamiento</button>
+    <button class="nav-btn" onclick="showSection('recintos')">📍 Recintos Medidos</button>
+    <button class="nav-btn" onclick="showSection('grabaciones')">🎙️ Grabaciones</button>
+    <button class="nav-btn" onclick="showSection('convolucion')">🔁 Convolución</button>
+    <button class="nav-btn" onclick="showSection('galeria')">📸 Galería</button>
+    <button class="nav-btn" onclick="showSection('audioPlayers')">🎵 Audio Players</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="content-section active">
+      <header>
+        <h1>Captura y Procesamiento de Respuesta al Impulso</h1>
+        <p>Proyecto Acústica UACh - Grupo X</p>
+      </header>
+      <p>Bienvenido al informe del proyecto de medición acústica.</p>
+    </section>
+
+    <!-- Sección Integrantes -->
+    <section id="integrantes" class="content-section">
+      <h2>👥 Integrantes del Grupo</h2>
+      <ul>
+        <li>Nombre 1</li>
+        <li>Nombre 2</li>
+        <li>Nombre 3</li>
+      </ul>
+    </section>
+
+   <!-- Sección Equipamiento -->
+    <section id="equipamiento" class="content-section">
+      <h2>🛠️ Equipamiento Utilizado</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around;">
+
+        <div style="flex: 1 1 200px; text-align: center;">
+          <img src="imagenes/Behringer-ECM8000-Microfono-de-Condensador-para-Medicion-Set-Planet-Music-1200x1200-1.png" alt="Micrófono" style="width: 100%; max-width: 200px; border-radius: 8px;">
+          <p>Micrófono: Behringer-ECM8000</p>
+        </div>
+
+        <div style="flex: 1 1 200px; text-align: center;">
+          <img src="imagenes/s-l400.png" alt="Fuente sonora" style="width: 100%; max-width: 200px; border-radius: 8px;">
+          <p>Fuente sonora: Wood clapper</p>
+        </div>
+
+        <div style="flex: 1 1 200px; text-align: center;">
+          <img src="imagenes/23544.png" alt="Grabadora o interfaz" style="width: 100%; max-width: 200px; border-radius: 8px;">
+          <p>Grabadora/Interface: KOMPLETE Audio 1</p>
+        </div>
+
+        <div style="flex: 1 1 200px; text-align: center;">
+          <img src="imagenes/s23_hero_sp23-dlab-ableton.png" alt="Software" style="width: 100%; max-width: 200px; border-radius: 8px;">
+          <p>Software: Ableton Live 12 Suite</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección Recintos -->
+    <section id="recintos" class="content-section">
+      <h2>📍 Recintos Medidos</h2>
+      <h3>1. Cámara Reverberante Acústica UACh</h3>
+      <h3>2. Edificio 14K</h3>
+      <h3>3. Edificio 6K pasillos</h3>
+      
+      <p>Descripción breve del recinto...</p>
+      <div class="audio-block">
+        <p>🎧 Respuesta al Impulso:</p>
+        <audio controls src="audios/ri-camara.wav"></audio>
+      </div>
+
+      <h3>2. [Nombre del Recinto 2]</h3>
+      <p>Descripción breve...</p>
+      <audio controls src="audios/ri-recinto2.wav"></audio>
+
+      <h3>3. [Nombre del Recinto 3]</h3>
+      <p>Descripción breve...</p>
+      <audio controls src="audios/ri-recinto3.wav"></audio>
+    </section>
+
+    <!-- Sección Grabaciones -->
+    <section id="grabaciones" class="content-section">
+      <h2>🎙️ Grabaciones en Cámara Anecoica</h2>
+      <p>Grabaciones de voz e instrumento sin reverberación.</p>
+      <h4>Voz</h4>
+      <audio controls src="audios/voz-seca.wav"></audio>
+      <h4>Instrumento</h4>
+      <audio controls src="audios/instrumento-seco.wav"></audio>
+    </section>
+
+    <!-- Sección Convolución -->
+    <section id="convolucion" class="content-section">
+      <h2>🔁 Convolución con Respuestas al Impulso</h2>
+      <p>Aplicación de convolución para simular los recintos.</p>
+
+      <h4>Voz en Cámara Reverberante</h4>
+      <audio controls src="audios/voz-conv-camara.wav"></audio>
+
+      <h4>Instrumento en Recinto 2</h4>
+      <audio controls src="audios/instrumento-conv-recinto2.wav"></audio>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="galeria" class="content-section">
+      <h2>📸 Galería Fotográfica</h2>
+      <p>Aquí irían las fotos del proyecto cuando estén disponibles.</p>
+    </section>
+    
+    <!-- Sección Audio Players -->
+    <section id="audioPlayers" class="content-section">
+      <h2>🎵 Audio Players</h2>
+      <h3>Texto antes del audio 1</h3>
+      <div id="audio1" class="player-container"></div>
+
+      <h3>Texto antes del audio 2</h3>
+      <div id="audio2" class="player-container"></div>
+
+      <h3>Texto antes del audio 3</h3>
+      <div id="audio3" class="player-container"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>UACh - Escuela de Acústica | Proyecto de Medición ISO 3382</p>
+  </footer>
 
   <script>
     function showSection(sectionId) {
+      // Oculta todas las secciones
       document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
       });
+      
+      // Muestra la sección seleccionada
       document.getElementById(sectionId).classList.add('active');
+      
+      // Actualiza el botón activo
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('active');
       });
@@ -27,16 +302,6 @@
     function createAudioPlayer(containerId, audioSrc, title) {
       const container = document.getElementById(containerId);
       if (!container) return;
-      
-      // Limpiar contenedor si ya existe contenido
-      container.innerHTML = '';
-      
-      // Agregar título si se proporciona
-      if (title) {
-        const titleElement = document.createElement('h4');
-        titleElement.textContent = title;
-        container.appendChild(titleElement);
-      }
       
       const wavesurfer = WaveSurfer.create({
         container: `#${containerId}`,
@@ -51,40 +316,21 @@
         responsive: true
       });
       
-      // Manejar errores de carga
-      wavesurfer.on('error', (error) => {
-        console.error('Error al cargar audio:', error);
-        const errorMsg = document.createElement('p');
-        errorMsg.style.color = '#ff6b6b';
-        errorMsg.textContent = `Error al cargar el audio: ${audioSrc}`;
-        container.appendChild(errorMsg);
-      });
-      
       wavesurfer.load(audioSrc);
       
-      // Controles
+      // Add controls
       const controls = document.createElement('div');
       controls.style.marginTop = '10px';
       controls.style.display = 'flex';
       controls.style.gap = '10px';
       controls.style.alignItems = 'center';
-      controls.style.flexWrap = 'wrap';
       
       const playBtn = document.createElement('button');
-      playBtn.textContent = 'Play/Pause';
-      playBtn.style.padding = '5px 10px';
-      playBtn.style.backgroundColor = '#2b91af';
-      playBtn.style.color = 'white';
-      playBtn.style.border = 'none';
-      playBtn.style.borderRadius = '3px';
-      playBtn.style.cursor = 'pointer';
+      playBtn.textContent = 'Play';
       playBtn.onclick = () => wavesurfer.playPause();
       
       const timeDisplay = document.createElement('div');
-      timeDisplay.style.minWidth = '100px';
-      
-      const volumeLabel = document.createElement('span');
-      volumeLabel.textContent = 'Volumen:';
+      timeDisplay.style.minWidth = '60px';
       
       const volumeControl = document.createElement('input');
       volumeControl.type = 'range';
@@ -92,23 +338,23 @@
       volumeControl.max = '1';
       volumeControl.step = '0.01';
       volumeControl.value = '1';
-      volumeControl.style.width = '100px';
       volumeControl.oninput = (e) => wavesurfer.setVolume(e.target.value);
       
       controls.appendChild(playBtn);
       controls.appendChild(timeDisplay);
-      controls.appendChild(volumeLabel);
+      controls.appendChild(document.createTextNode('Volumen:'));
       controls.appendChild(volumeControl);
       
       container.appendChild(controls);
       
-      // Actualizar tiempo
+      // Update time display
       wavesurfer.on('audioprocess', () => {
         const currentTime = wavesurfer.getCurrentTime();
         const duration = wavesurfer.getDuration();
         timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
       });
       
+      // Format time as MM:SS
       function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
@@ -116,15 +362,11 @@
       }
     }
     
-    // Inicializar reproductores cuando el DOM esté listo
+    // Initialize audio players when the page loads
     document.addEventListener('DOMContentLoaded', () => {
-      // Verifica si estamos en la sección de audio players antes de crear
-      if (document.getElementById('audio1')) {
-        // Usa rutas relativas desde la ubicación de tu index.html
-        createAudioPlayer("audio1", "audio/an_01_bot.wav", "Audio 1");
-        createAudioPlayer("audio2", "audio/an_02_bot.wav", "Audio 2");
-        createAudioPlayer("audio3", "audio/an_03_poem.wav", "Audio 3");
-      }
+      createAudioPlayer("audio1", "../audio/an_01_bot.wav", "Título del Audio 1");
+      createAudioPlayer("audio2", "../audio/an_02_bot.wav", "Título del Audio 2");
+      createAudioPlayer("audio3", "../audio/an_03_poem.wav", "Título del Audio 3");
     });
   </script>
 </body>
