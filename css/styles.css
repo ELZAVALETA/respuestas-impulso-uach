@@ -73,4 +73,10 @@
   height: 300vh; /* Ajusta la duración del efecto de scroll */
 }
 
+#scrollVideo {
+  width: 100%; /* Ancho del 100% del contenedor */
+  height: auto; /* Altura ajustada proporcionalmente */
+  max-width: 800px; /* Limitar el ancho máximo */
+  aspect-ratio: 16/9; /* Relación de aspecto fija */
+}
 
