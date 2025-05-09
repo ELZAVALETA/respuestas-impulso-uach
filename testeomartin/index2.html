@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respuesta al Impulso - Grupo UACh</title>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <style>
+    /* [Todos tus estilos anteriores permanecen igual] */
+  </style>
+</head>
+<body>
+  <!-- [Todo el contenido HTML anterior permanece igual] -->
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+    
+    function createAudioPlayer(containerId, audioSrc, title) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      // Limpiar contenedor si ya existe contenido
+      container.innerHTML = '';
+      
+      // Agregar título si se proporciona
+      if (title) {
+        const titleElement = document.createElement('h4');
+        titleElement.textContent = title;
+        container.appendChild(titleElement);
+      }
+      
+      const wavesurfer = WaveSurfer.create({
+        container: `#${containerId}`,
+        waveColor: '#4a4a4a',
+        progressColor: '#2b91af',
+        cursorColor: '#ffffff',
+        barWidth: 2,
+        barRadius: 3,
+        cursorWidth: 1,
+        height: 100,
+        barGap: 2,
+        responsive: true
+      });
+      
+      // Manejar errores de carga
+      wavesurfer.on('error', (error) => {
+        console.error('Error al cargar audio:', error);
+        const errorMsg = document.createElement('p');
+        errorMsg.style.color = '#ff6b6b';
+        errorMsg.textContent = `Error al cargar el audio: ${audioSrc}`;
+        container.appendChild(errorMsg);
+      });
+      
+      wavesurfer.load(audioSrc);
+      
+      // Controles
+      const controls = document.createElement('div');
+      controls.style.marginTop = '10px';
+      controls.style.display = 'flex';
+      controls.style.gap = '10px';
+      controls.style.alignItems = 'center';
+      controls.style.flexWrap = 'wrap';
+      
+      const playBtn = document.createElement('button');
+      playBtn.textContent = 'Play/Pause';
+      playBtn.style.padding = '5px 10px';
+      playBtn.style.backgroundColor = '#2b91af';
+      playBtn.style.color = 'white';
+      playBtn.style.border = 'none';
+      playBtn.style.borderRadius = '3px';
+      playBtn.style.cursor = 'pointer';
+      playBtn.onclick = () => wavesurfer.playPause();
+      
+      const timeDisplay = document.createElement('div');
+      timeDisplay.style.minWidth = '100px';
+      
+      const volumeLabel = document.createElement('span');
+      volumeLabel.textContent = 'Volumen:';
+      
+      const volumeControl = document.createElement('input');
+      volumeControl.type = 'range';
+      volumeControl.min = '0';
+      volumeControl.max = '1';
+      volumeControl.step = '0.01';
+      volumeControl.value = '1';
+      volumeControl.style.width = '100px';
+      volumeControl.oninput = (e) => wavesurfer.setVolume(e.target.value);
+      
+      controls.appendChild(playBtn);
+      controls.appendChild(timeDisplay);
+      controls.appendChild(volumeLabel);
+      controls.appendChild(volumeControl);
+      
+      container.appendChild(controls);
+      
+      // Actualizar tiempo
+      wavesurfer.on('audioprocess', () => {
+        const currentTime = wavesurfer.getCurrentTime();
+        const duration = wavesurfer.getDuration();
+        timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+      });
+      
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+      }
+    }
+    
+    // Inicializar reproductores cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+      // Verifica si estamos en la sección de audio players antes de crear
+      if (document.getElementById('audio1')) {
+        // Usa rutas relativas desde la ubicación de tu index.html
+        createAudioPlayer("audio1", "audio/an_01_bot.wav", "Audio 1");
+        createAudioPlayer("audio2", "audio/an_02_bot.wav", "Audio 2");
+        createAudioPlayer("audio3", "audio/an_03_poem.wav", "Audio 3");
+      }
+    });
+  </script>
+</body>
+</html>
