@@ -88,3 +88,7 @@
   cursor: ns-resize;
 }
 
+.sidebar-logo {
+  margin-bottom: 10px; /* Ajusta el valor según lo que necesites */
+}
+
